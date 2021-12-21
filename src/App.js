@@ -1,7 +1,11 @@
-import Login from "./components/Login";
-
+import ListRoutes from "./routes/routes";
+import { BrowserRouter } from "react-router-dom"
 function App() {
-  return <Login />;
+  return (
+    <BrowserRouter>
+      <ListRoutes />
+    </BrowserRouter>
+  );
 }
 
 export default App;
