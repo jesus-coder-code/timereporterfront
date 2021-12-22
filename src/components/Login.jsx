@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useRef } from "react"
+import { useNavigate } from "react-router-dom"
+import Select from "react-select"
 
 export default function Login(props) {
+  const Rol = [{ value: 'admin', label: 'Admin' }, { value: 'employee', label: 'Employee' }]
   const refUser = useRef(null);
   const refPass = useRef(null);
   let navigate = useNavigate();
@@ -10,11 +12,12 @@ export default function Login(props) {
     navigate("/register");
   };
   const handleLogin = () => {
-    const data = {
+    /*const data = {
       user: refUser.current.value,
       password: refPass.current.value,
     };
-    console.log(data);
+    console.log(data);*/
+    navigate("/entries")
   };
 
   return (
@@ -24,6 +27,11 @@ export default function Login(props) {
           <div className="card">
             <div className="card-header">Login</div>
             <div className="card-body">
+              <div>
+                <Select className="mb-3" options={Rol}>
+                </Select>
+              </div>
+
               <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">
                   @

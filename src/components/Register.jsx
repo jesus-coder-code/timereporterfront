@@ -1,14 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from "reactstrap";
 
 export default function Register(props) {
+  const Rol = [{ value: 'admin', label: 'Admin' }, { value: 'employee', label: 'Employee' }]
   const refName = useRef(null);
   const refUser = useRef(null);
   const refPass = useRef(null);
@@ -23,11 +19,12 @@ export default function Register(props) {
     console.log(data);
   };
 
-  const [dropdown, setDropdown] = useState(false);
+  //para dropdowns
+  //const [dropdown, setDropdown] = useState(false);
 
-  const OpenCloseDropdown = () => {
+  /*const OpenCloseDropdown = () => {
     setDropdown(!dropdown);
-  };
+  };*/
 
   const onClick = () => {
     navigate("/login");
@@ -42,14 +39,8 @@ export default function Register(props) {
             <div className="card-body">
 
               <div>
-                <Dropdown isOpen={dropdown} toggle={OpenCloseDropdown}>
-                  <DropdownToggle caret>Rol</DropdownToggle>
-
-                  <DropdownMenu>
-                    <DropdownItem>Admin</DropdownItem>
-                    <DropdownItem>Empleado</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
+                <Select className="mb-3" options={Rol}>
+                </Select>
               </div>
 
               <div className="input-group mb-3">
