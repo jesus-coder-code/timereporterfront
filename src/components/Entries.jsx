@@ -1,17 +1,15 @@
-import React, { useState } from "react"
+import React from "react"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label } from "reactstrap"
 
 
 export default function Entries(props) {
-    /*const [setShow] = useState(false)
+    const [modal, setModal] = React.useState(false)
+    const toggle = () => setModal(!modal)
 
-    const handleModal = () => {
-        setShow(true)
-    }*/
     return (
         <>
-            <Button type="button" className="btn btn-primary mt-5">New Entry</Button>
-            <Modal>
+            <Button type="button" className="btn btn-primary mt-5" onClick={toggle}>New Entry</Button>
+            <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader>
                     New Entry
                 </ModalHeader>
@@ -19,6 +17,10 @@ export default function Entries(props) {
                 <ModalBody>
                     <FormGroup>
                         <Label for="project">Project</Label>
+                        <Input type="text" id="project" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="project">ProjectId</Label>
                         <Input type="text" id="project" />
                     </FormGroup>
                     <FormGroup>
@@ -37,7 +39,8 @@ export default function Entries(props) {
                 </ModalBody>
 
                 <ModalFooter>
-
+                    <Button color="success" onClick={toggle}>Create</Button>
+                    <Button color="danger" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
             <table className="table table-bordered mt-5">
