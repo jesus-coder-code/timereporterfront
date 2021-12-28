@@ -10,6 +10,10 @@ export default function Register(props) {
   const refPass = useRef(null);
   let navigate = useNavigate();
 
+  const select = (value) => {
+    console.log(value)
+  }
+
   const handleRegister = () => {
     const data = {
       name: refName.current.value,
@@ -39,7 +43,7 @@ export default function Register(props) {
             <div className="card-body">
 
               <div>
-                <Select className="mb-3" options={Rol}>
+                <Select className="mb-3" options={Rol} onChange={select}>
                 </Select>
               </div>
 

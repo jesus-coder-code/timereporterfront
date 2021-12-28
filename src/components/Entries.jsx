@@ -39,7 +39,7 @@ export default function Entries(props) {
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button color="success" onClick={toggle}>Create</Button>
+                    <Button color="success">Create</Button>
                     <Button color="danger" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>

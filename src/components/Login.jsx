@@ -1,8 +1,9 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Select from "react-select"
 
 export default function Login(props) {
+  const [rol, setRol] = useState({ value: '' });
   const Rol = [{ value: 'admin', label: 'Admin' }, { value: 'employee', label: 'Employee' }]
   const refUser = useRef(null);
   const refPass = useRef(null);
@@ -11,14 +12,18 @@ export default function Login(props) {
   const onClick = () => {
     navigate("/register");
   };
-  const handleLogin = () => {
-    /*const data = {
-      user: refUser.current.value,
-      password: refPass.current.value,
-    };
-    console.log(data);*/
-    navigate("/entries")
+  const handleLogin = (value) => {
+    if (rol.value === 'admin') {
+      navigate("/projects")
+    }
+    else {
+      navigate("/entries")
+    }
   };
+
+  const select = (e) => {
+    setRol({ ...rol, value: e.value });
+  }
 
   return (
     <div className="login">
@@ -27,9 +32,8 @@ export default function Login(props) {
           <div className="card">
             <div className="card-header">Login</div>
             <div className="card-body">
-              <div>
-                <Select className="mb-3" options={Rol}>
-                </Select>
+              <div className="mb-3">
+                <Select onChange={select} options={Rol}></Select>
               </div>
 
               <div className="input-group mb-3">
@@ -75,6 +79,6 @@ export default function Login(props) {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
